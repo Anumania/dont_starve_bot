@@ -4,35 +4,45 @@ const client = new Discord.Client();
 let fs = require('fs');
 let moment = require('moment');
 
-let path = 'D:/benis/steamapps/common/Don\'t Starve Together/data/out.lua'; //your folder path (views is an example folder)
-let path2 = 'D:/benis/steamapps/common/Don\'t Starve Together/data/in.lua'; //your folder path (views is an example folder)
+let path = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/out.lua'; //your folder path (views is an example folder)
+let path2 = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/in.lua'; //your folder path (views is an example folder)
 
 let lastModified = 0;
 let channelHook = 0;
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  fs.open(path,'r',(err, fd) =>{
-	 fs.stat(path,(err,data) =>{
+  try{
+	  if(!fs.existsSync(path)){
+		fs.writeFileSync(path,Date.now());
+	  }
+  }
+  catch(err){console.log(err)}
+  try{
+	  if(!fs.existsSync(path2)){ //if file doesnt exist, make it
+		  fs.writeFileSync(path2, "");
+	  }
+  }
+  catch(err){console.log(err)}
+	fd = undefined;
+  try{
+  fd = fs.openSync(path,'r');
+  } catch(err){console.log(err)}
+	try{
+	 var data = fs.statSync(path)
 		lastModified = data.mtime.toISOString();
 		console.log("last modified changed to " + lastModified);
-	 });
+	}
+	catch (err){console.log(err);}
 	 try{
-	fs.closeSync(fd);
+		fs.closeSync(fd);
 	 }
 	 catch(err){
 		 console.log(err);
 	 }
-  });
 });
 
 client.on('message', message => {
-  if (message.content === '') {
-    message.reply('Pong!');
-  }
-  if (message.content === "dst!startup") { 
-		
-  }
-  if (message.content === "dst!dstlink") { 
+  if (message.content === "dst!link") { 
 	channelhook = message.channel;
 	message.delete();
       var interval = setInterval (function () {
@@ -43,22 +53,18 @@ client.on('message', message => {
 				} 
 				else{ 
 					fs.stat(path, (err, data) => {
-					console.log('check if file/folder last modified date, was it after my last check ');
 					let previousLMM = moment(lastModified);
-					let bruh = data.mtime.toISOString();
-					let folderLMM = moment(bruh);
+					let rightNow = data.mtime.toISOString();
+					let folderLMM = moment(rightNow);
 					let res = !(folderLMM.isSame(previousLMM, 'second')); //seconds granularity
-					console.log(folderLMM);
-					console.log(previousLMM);
 					if(res){
 						try {
 						  let data = fs.readFileSync(path, 'utf8')
-						  console.log(data);
 						  message.channel.send(data);
 						} catch (err) {
-						  console.error(err)
+						  console.error(err);
 						}
-						lastModified = bruh;
+						lastModified = rightNow;
 					}
 					try{
 						fs.closeSync(fd);
@@ -73,8 +79,7 @@ client.on('message', message => {
       }, 500); 
     }
 	
-	if(message.content.startsWith("!send")){
-		//message.delete();
+	if(message.content.startsWith("!send ")){
 		console.log(Date.now());
 		fs.open(path2,'w',(err, fd) => {
 			try {
@@ -96,7 +101,7 @@ client.on('message', message => {
 
 
 
-client.login('bot login here');
+client.login('put your token here!');
 
 
 
