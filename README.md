@@ -25,7 +25,7 @@ if you have installed dont starve together somewhere else, you will also need to
 
 on first startup, you should start the discord bot first and then don't starve to prevent a crash
 
-2 commands: `dst!dstlink` will tell the discord bot to copy all messages sent in dont starve to the current channel, this can be a dm directly to it. `!send<message>` to send messages to dont starve.
+2 commands: `dst!link` will tell the discord bot to copy all messages sent in dont starve to the current channel, this can be a dm directly to it. `!send<message>` to send messages to dont starve.
 
 the bot will not remember what channel to send to after a shutdown
 
