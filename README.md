@@ -33,3 +33,11 @@ the bot will not remember what channel to send to after a shutdown
 
 if you are having trouble, feel free to ask me on discord @ Anumania#0261
 
+
+NEW STUFF:
+now, both sides use json for communicating which means you can modify a lot easier.
+the mod side of stuff now works reliably on dedicated servers, even if caves are enabled or more than one shard is being used.
+there is commented code for allowing admins to execute lua on the serverside which is super dangerous and you should not uncomment it unless you know what youre doing.
+there are custom commands commented out on the bot side using said dangerous execute lua functionality. 
+
+if you want help setting up the bot to only allow certain people to execute commands, let me know, but if you know discord.js its not all that hard.
