@@ -4,8 +4,8 @@ const client = new Discord.Client();
 let fs = require('fs');
 let moment = require('moment');
 
-let path = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/out.lua'; //your folder path (views is an example folder)
-let path2 = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/in.lua'; //your folder path (views is an example folder)
+let path = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/out.json'; //your folder path (views is an example folder)
+let path2 = 'C:/Program Files (x86)/Steam/steamapps/common/Don\'t Starve Together/data/in.json'; //your folder path (views is an example folder)
 
 let lastModified = 0;
 let channelHook = 0;
