@@ -41,3 +41,5 @@ there is commented code for allowing admins to execute lua on the serverside whi
 there are custom commands commented out on the bot side using said dangerous execute lua functionality. 
 
 if you want help setting up the bot to only allow certain people to execute commands, let me know, but if you know discord.js its not all that hard.
+
+i think discord might be about to drop support for this version of the api so let me know if it randomly stops being able to connect to discord pls
