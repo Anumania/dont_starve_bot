@@ -9,7 +9,7 @@ make a folder anywhere, go inside, open the command prompt and use the commands:
 
 `npm install node.js`
 
-`npm install discord.js`
+`npm install discord.js@12.5.3`
 
 `npm install moment`
 
